@@ -3,6 +3,8 @@ from unittest import TestCase
 import numpy as np
 import pandas as pd
 
+from recommender.stage1.steps.train_test_split import TrainTestSplit
+
 class TestTestTrainSplit(TestCase):
 
     def setUp(self):
