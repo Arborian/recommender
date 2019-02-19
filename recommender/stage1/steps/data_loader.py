@@ -9,7 +9,7 @@ Example usage:
 import pickle
 import numpy as np
 
-class ScoreEvents():
+class DataLoader():
     """Workflow step that loads event data.
 
     Init parameters:
