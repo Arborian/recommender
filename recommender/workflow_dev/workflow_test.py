@@ -35,4 +35,3 @@ class TestDevWorkflow(TestCase):
     def test_stage_1(self):
         stage = Stage1(self.config_stage1)
         result = stage.execute()
-        print(result['scores'])
