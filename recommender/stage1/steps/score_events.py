@@ -10,6 +10,7 @@ Example usage:
 """
 import pickle
 import numpy as np
+import pandas as pd
 
 class ScoreEvents():
     """Workflow step that splits an event stream into two event streams based on a particular

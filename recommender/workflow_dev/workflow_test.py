@@ -10,7 +10,7 @@ class TestDevWorkflow(TestCase):
     def setUp(self):
         self.config_stage1 = {
             'data_loader': {
-                'event_filename': 'mock_data/events.csv',
+                'event_filename': 'recommender/workflow_dev/mock_data/events.csv',
             },
             'score_events': {
                 'input_column_name': 'event',
@@ -25,7 +25,7 @@ class TestDevWorkflow(TestCase):
                 'column_name': 'itemid',
             },
             'group_scores': {
-                'key': 'groupid itemid',
+                'key': 'visitorid itemid'.split(),
             },
             'score_filter': {
                 'min_score': 10,
@@ -35,3 +35,4 @@ class TestDevWorkflow(TestCase):
     def test_stage_1(self):
         stage = Stage1(self.config_stage1)
         result = stage.execute()
+        print(result['scores'])

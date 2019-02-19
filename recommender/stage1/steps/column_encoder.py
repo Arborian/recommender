@@ -2,6 +2,7 @@
 Encode categorical column
 """
 import pickle
+import pandas as pd
 from sklearn import preprocessing
 
 class ColumnEncoder():
@@ -14,10 +15,11 @@ class ColumnEncoder():
     def execute(self, df):
         enc = preprocessing.LabelEncoder()
         new_col = enc.fit_transform(df[self.column_name])
-        new_df = df.drop(column_name, axis=1)
+        new_df = df.drop(self.column_name, axis=1)
+        new_df[self.column_name] = new_col
         return {
             'encoder': enc,
-            'df': pd.concat([new_df, new_col]),
+            'df': new_df,
         }
 
     def persist(self, path, data):

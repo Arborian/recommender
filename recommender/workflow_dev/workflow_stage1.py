@@ -10,9 +10,9 @@ import pickle
 
 from recommender.stage1.steps.data_loader import DataLoader
 from recommender.stage1.steps.score_events import ScoreEvents
-from recommender.stage1.steps.group_scores import GroupScores
+from recommender.stage1.steps.group_scores import ScoreGrouper
 from recommender.stage1.steps.filter_scores import ScoreFilter
-from recommender.stage1.steps.encode_column import ColumnEncoder
+from recommender.stage1.steps.column_encoder import ColumnEncoder
 
 class Stage1():
     """This stage loads the event and fits the scoring model.
@@ -42,7 +42,7 @@ class Stage1():
             'column_name': 'itemid',
         },
         'group_scores': {
-            'key': 'groupid itemid',
+            'key': 'visitorid itemid'.split(),
         },
         'score_filter': {
             'min_score': 10,
@@ -75,7 +75,7 @@ class Stage1():
         return step.execute(df_events)
 
     def _group_scores(self, df_scored_events):
-        step = GroupScores(**self.config.get('group_scores', {}))
+        step = ScoreGrouper(**self.config.get('group_scores', {}))
         return step.execute(df_scored_events)
 
     def _filter_scores(self, s_grouped_scores):
@@ -90,8 +90,8 @@ class Stage1():
         df_events = self._load_data()
         df_scored_events = self._score_events(df_events)
         s_grouped_scores = self._group_scores(df_scored_events)
-        s_filtered_scores = self._filter_scores(s_grouped_scores)
-        d_encoder = self._encode_itemids(s_filtered_scores.reset_index())
+        df_filtered_scores = self._filter_scores(s_grouped_scores.reset_index())
+        d_encoder = self._encode_itemids(df_filtered_scores)
         return {
             'item_encoder': d_encoder['encoder'],
             'scores': d_encoder['df'],

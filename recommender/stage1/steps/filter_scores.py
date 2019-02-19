@@ -4,17 +4,18 @@ Encode categorical column
 import pickle
 from sklearn import preprocessing
 
-class ScoreGrouper():
+class ScoreFilter():
     def __init__(
             self,
-            key='groupkey',
+            min_score=10,
             column_name='score',
         ):
-        self.key = key
+        self.min_score = min_score
         self.column_name = column_name
 
     def execute(self, df):
-        return df.groupby(self.key)[self.column_name].sum()
+        col = df[self.column_name]
+        return df[col >= self.min_score]
 
     def persist(self, path, data):
         with open(path, 'wb') as f:
