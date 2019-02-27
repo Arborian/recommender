@@ -14,6 +14,7 @@ from recommender.stage1.steps.group_scores import ScoreGrouper
 from recommender.stage1.steps.filter_scores import ScoreFilter
 from recommender.stage1.steps.column_encoder import ColumnEncoder
 
+
 class Stage1():
     """This stage loads the event and fits the scoring model.
 
