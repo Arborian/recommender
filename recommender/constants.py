@@ -1,0 +1,2 @@
+EVENT_COLUMN_NAME = 'event'
+SCORE_COLUMN_NAME = 'score'

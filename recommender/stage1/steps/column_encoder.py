@@ -2,14 +2,14 @@
 Encode categorical column
 """
 import pickle
-import pandas as pd
 from sklearn import preprocessing
+
 
 class ColumnEncoder():
     def __init__(
             self,
             column_name='colname',
-        ):
+    ):
         self.column_name = column_name
 
     def execute(self, df):

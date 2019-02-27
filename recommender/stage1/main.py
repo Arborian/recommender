@@ -56,8 +56,8 @@ class Stage1():
     Execution Returns:
         Python Dictionary with the following keys:
             - item_encoder: LabelEncoder() with encoded relevant itemids
-            - scores: Pandas Series indexed by (visitorid, encoded itemid) with the score
-                for each relevant visitorid/item
+            - scores: Pandas Series indexed by (visitorid, encoded itemid) with
+                the score for each relevant visitorid/item
         }
 
     Persist strategy:
@@ -106,4 +106,3 @@ class Stage1():
         data = self.execute()
         self.persist(path, data)
         return data
-

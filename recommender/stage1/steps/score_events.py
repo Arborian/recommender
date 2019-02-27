@@ -8,9 +8,8 @@ Example usage:
 >>> step = ScoreEvents()
 >>> df_scored = step.execute(df)
 """
-import pickle
-import numpy as np
 import pandas as pd
+
 
 class ScoreEvents():
     """Workflow step that splits an event stream into two event streams based on a particular
@@ -37,7 +36,7 @@ class ScoreEvents():
             input_column_name='event',
             score_column_name='score',
             score_map=None,
-        ):
+    ):
         self.input_column_name = input_column_name
         self.score_column_name = score_column_name
         if score_map is None:

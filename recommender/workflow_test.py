@@ -1,20 +1,20 @@
 from unittest import TestCase
 
-import numpy as np
-import pandas as pd
 
-from recommender.workflow_dev.workflow_stage1 import Stage1
+import recommender.constants as C
+from recommender.stage1.main import Stage1
+
 
 class TestDevWorkflow(TestCase):
 
     def setUp(self):
         self.config_stage1 = {
             'data_loader': {
-                'event_filename': 'recommender/workflow_dev/mock_data/events.csv',
+                'event_filename': 'recommender/mock_data/events.csv',
             },
             'score_events': {
-                'input_column_name': 'event',
-                'score_column_name': 'score',
+                'input_column_name': C.EVENT_COLUMN_NAME,
+                'score_column_name': C.SCORE_COLUMN_NAME,
                 'score_map': {
                         'view': 1,
                         'addtocart': 5,

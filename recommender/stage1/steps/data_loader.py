@@ -6,9 +6,8 @@ Example usage:
 >>> step = DataLoader(event_filename='mock_data/events.csv')
 >>> df = step.execute()
 """
-import pickle
-import numpy as np
 import pandas as pd
+
 
 class DataLoader():
     """Workflow step that loads event data.
@@ -29,7 +28,7 @@ class DataLoader():
     def __init__(
             self,
             event_filename,
-        ):
+    ):
         self.event_filename = event_filename
 
     def execute(self):

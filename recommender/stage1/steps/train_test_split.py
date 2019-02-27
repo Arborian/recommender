@@ -11,6 +11,7 @@ Example usage:
 import pickle
 import numpy as np
 
+
 class TrainTestSplit():
     """Workflow step that splits an event stream into two event streams based on a particular
     column in the stream.
@@ -35,7 +36,7 @@ class TrainTestSplit():
             self,
             column_name='visitorid',
             train_percentile=90,
-        ):
+    ):
         self.column_name = column_name
         self.train_percentile = train_percentile
 

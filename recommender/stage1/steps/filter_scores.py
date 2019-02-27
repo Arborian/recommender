@@ -2,14 +2,13 @@
 Encode categorical column
 """
 import pickle
-from sklearn import preprocessing
 
 class ScoreFilter():
     def __init__(
             self,
             min_score=10,
             column_name='score',
-        ):
+    ):
         self.min_score = min_score
         self.column_name = column_name
 

@@ -2,14 +2,14 @@
 Encode categorical column
 """
 import pickle
-from sklearn import preprocessing
+
 
 class ScoreGrouper():
     def __init__(
             self,
             key='groupkey',
             column_name='score',
-        ):
+    ):
         self.key = key
         self.column_name = column_name
 
